@@ -7,10 +7,10 @@ import React, {
   useState,
 } from 'react';
 
-const IssuseContext = createContext<any>(null);
+const IssuesContext = createContext<any>(null);
 
-export const useIssuse = () => useContext(IssuseContext);
-interface IssuseProviderProps {
+export const useIssues = () => useContext(IssuesContext);
+interface IssuesProviderProps {
   children: ReactNode;
   issuesService: any;
 }
@@ -51,7 +51,7 @@ type IssuesType = IssueType[];
 export function IssuseProvider({
   children,
   issuesService,
-}: IssuseProviderProps) {
+}: IssuesProviderProps) {
   const [issues, setIssuse] = useState<IssuesType>([]);
   const [detail, setDetail] = useState<IssuesType>([]);
   const [issuesNumber, setIssuesNumber] = useState('');
@@ -64,7 +64,6 @@ export function IssuseProvider({
   const moveDetail = useCallback(
     (issuesNum: string) => {
       setIssuesNumber(issuesNum);
-      // console.log(stringChangNum);
     },
     [issuesNumber],
   );
@@ -86,10 +85,10 @@ export function IssuseProvider({
   }, [issuesNumber]);
 
   return (
-    <IssuseContext.Provider
+    <IssuesContext.Provider
       value={{ issues, pageCount, isLoading, detail, moveDetail }}
     >
       {children}
-    </IssuseContext.Provider>
+    </IssuesContext.Provider>
   );
 }
