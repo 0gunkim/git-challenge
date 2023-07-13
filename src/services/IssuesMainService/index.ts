@@ -1,7 +1,8 @@
+import { HttpClient } from '../HttpClient';
+
 export class IssuesService {
   private httpClient;
-  //@ts-ignore
-  constructor(httpClient) {
+  constructor(httpClient: HttpClient) {
     this.httpClient = httpClient;
   }
   async get(pageNum: string) {
