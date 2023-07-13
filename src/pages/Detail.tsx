@@ -1,5 +1,5 @@
-import React from 'react';
+import DetailItem from '../components/Detail';
 
 export default function Detail() {
-  return <div>Detail page</div>;
+  return <DetailItem />;
 }
