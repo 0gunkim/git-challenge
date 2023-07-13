@@ -6,10 +6,10 @@ import { HttpClient } from './services/HttpClient';
 import { IssuesService } from './services/IssuesMainService';
 
 const httpClient = new HttpClient(process.env.REACT_APP_BASE_URL);
-const issuseService = new IssuesService(httpClient);
+const issuesService = new IssuesService(httpClient);
 function App() {
   return (
-    <IssuseProvider issuesService={issuseService}>
+    <IssuseProvider issuesService={issuesService}>
       <Layout>
         <Header />
         <Outlet />

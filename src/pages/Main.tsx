@@ -1,5 +1,5 @@
-import React from 'react';
+import MainList from '../components/Main/List';
 
 export default function Main() {
-  return <div>Main Page</div>;
+  return <MainList />;
 }
