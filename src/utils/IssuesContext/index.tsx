@@ -59,7 +59,7 @@ export function IssuseProvider({
   const [pageNum, setPageNum] = useState(0);
 
   const pageCount = () => {
-    setPageNum(pre => pre + 1);
+    setPageNum((pre) => pre + 1);
   };
   const moveDetail = useCallback(
     (issuesNum: string) => {

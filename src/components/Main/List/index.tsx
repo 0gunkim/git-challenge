@@ -10,7 +10,7 @@ import Loading from '../../common/Loading';
 export default function MainList() {
   const { issues, pageCount, isLoading } = useIssues();
   const ref = useIntersectionObserver(
-    entries => {
+    (entries) => {
       if (entries[0].isIntersecting) {
         pageCount();
       }
