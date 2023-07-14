@@ -6,6 +6,7 @@ import { useIssues } from '../../../utils/IssuesContext';
 import MainItem from '../Item';
 import wanted from '../../../assets/wanted.svg';
 import Loading from '../../common/Loading';
+import { IssueType } from '../../../Types/IssueType';
 
 export default function MainList() {
   const { issues, pageCount, isLoading } = useIssues();
@@ -20,8 +21,8 @@ export default function MainList() {
 
   return (
     <div>
-      {issues?.map((items: any, idx: number) => (
-        <div key={items.id}>
+      {issues?.map((items: IssueType, idx: number) => (
+        <div key={items.number}>
           {idx % 5 === 4 ? (
             <Link to={`https://www.wanted.co.kr/`} target="_blank">
               <StImg src={wanted} alt="img" />

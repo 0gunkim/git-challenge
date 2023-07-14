@@ -28,5 +28,5 @@ export interface IssueType {
   title: string;
   updated_at: string;
   url: string;
-  user: Object;
+  user: { login?: string };
 }

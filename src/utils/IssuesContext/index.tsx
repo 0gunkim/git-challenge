@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { IssueType } from '../../Types/Issue.type';
+import { IssueType } from '../../Types/IssueType';
 interface ContextType {
   issues: IssuesType;
   pageCount: () => void;
@@ -16,7 +16,6 @@ interface ContextType {
 }
 
 const IssuesContext = createContext<any>(null);
-
 export const useIssues = () => useContext(IssuesContext);
 interface IssuesProviderProps {
   children: ReactNode;
@@ -31,10 +30,11 @@ export function IssuseProvider({
   const [issues, setIssuse] = useState<IssuesType>([]);
   const [detail, setDetail] = useState<IssuesType>([]);
   const [issuesNumber, setIssuesNumber] = useState('');
-  const [isLoading, setIsLoading] = useState('');
+  const [isLoading, setIsLoading] = useState('fullfilled');
   const [pageNum, setPageNum] = useState(0);
-
-  const pageCount = () => setPageNum(pre => pre + 1);
+  const pageCount = () => {
+    setPageNum((pre) => pre + 1);
+  };
 
   const moveDetail = useCallback(
     (issuesNum: string) => {
@@ -44,10 +44,12 @@ export function IssuseProvider({
   );
   useEffect(() => {
     setIsLoading('pendding');
-    issuesService.get(pageNum).then((pre: IssuesType) => {
-      setIssuse((preIssues: IssuesType) => [...preIssues, ...pre]);
-      setIsLoading('fullfilled');
-    });
+    if (isLoading === 'fullfilled') {
+      issuesService.get(pageNum).then((pre: IssuesType) => {
+        setIssuse((preIssues: IssuesType) => [...preIssues, ...pre]);
+        setIsLoading('fullfilled');
+      });
+    }
   }, [pageNum]);
   useEffect(() => {
     setIsLoading('pendding');

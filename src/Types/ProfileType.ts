@@ -1,7 +1,9 @@
 export interface ProfileType {
   number: number;
   title: string;
-  login: string;
+  user: {
+    login?: string;
+  };
   created_at: string;
   comments: number;
   state: string;

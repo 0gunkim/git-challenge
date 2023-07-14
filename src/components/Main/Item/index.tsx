@@ -5,8 +5,9 @@ import { ProfileType } from '../../../Types/ProfileType';
 interface ItemsPropsType {
   items: ProfileType;
 }
+
 export default function MainItem(props: ItemsPropsType) {
-  const { number, title, created_at, comments, login, state } = props.items;
+  const { number, title, created_at, comments, user, state } = props.items;
 
   return (
     <>
@@ -14,7 +15,7 @@ export default function MainItem(props: ItemsPropsType) {
         <Profile
           number={number}
           title={title}
-          login={login}
+          user={user}
           created_at={created_at}
           comments={comments}
           state={state}

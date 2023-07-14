@@ -10,7 +10,7 @@ export interface DateType extends Array<number> {
 export default function Profile({
   number,
   title,
-  login,
+  user,
   created_at,
   comments,
   state,
@@ -25,7 +25,7 @@ export default function Profile({
           #{number} <StSpan>{title}</StSpan>
         </StTitle>
         <StAuth>
-          작성자: {login}, 작성일: {year}년 {month}월 {day}일
+          작성자: {user?.login}, 작성일: {year}년 {month}월 {day}일
         </StAuth>
       </div>
       <StComment>코멘트: {comments}</StComment>

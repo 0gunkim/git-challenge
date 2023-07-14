@@ -19,7 +19,7 @@ export default function DetailItem() {
         <Profile
           number={detail?.number}
           title={detail?.title}
-          login={detail?.user?.login}
+          user={detail.user}
           created_at={detail?.created_at}
           comments={detail?.comments}
           state={detail?.state}

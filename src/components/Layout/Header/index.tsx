@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { useIssues } from '../../../utils/IssuesContext';
+import { orgRepoName } from '../../../utils/OrgRefoName';
 
 export default function Header() {
+  const { issues } = useIssues();
+  const { orgName, repoName } = orgRepoName(issues);
   return (
     <>
       <Link to="/">
-        <HeaderStyle></HeaderStyle>
+        <HeaderStyle>
+          {orgName} / {repoName}
+        </HeaderStyle>
       </Link>
     </>
   );
