@@ -44,20 +44,30 @@ export function IssuseProvider({
   );
   useEffect(() => {
     setIsLoading('pendding');
-    if (isLoading === 'fullfilled') {
-      issuesService.get(pageNum).then((pre: IssuesType) => {
-        setIssuse((preIssues: IssuesType) => [...preIssues, ...pre]);
-        setIsLoading('fullfilled');
-      });
+    try {
+      if (isLoading === 'fullfilled') {
+        issuesService.get(pageNum).then((pre: IssuesType) => {
+          setIssuse((preIssues: IssuesType) => [...preIssues, ...pre]);
+          setIsLoading('fullfilled');
+        });
+      }
+    } catch (error) {
+      setIsLoading('fullfilled');
+      throw new Error('[Context] Get issues list data fail');
     }
   }, [pageNum]);
+
   useEffect(() => {
-    setIsLoading('pendding');
-    if (issuesNumber !== '') {
-      issuesService.detailGet(issuesNumber).then((result: IssuesType) => {
-        setDetail(result);
-        setIsLoading('fullfilled');
-      });
+    try {
+      if (issuesNumber !== '') {
+        setIsLoading('pendding');
+        issuesService.detailGet(issuesNumber).then((result: IssuesType) => {
+          setDetail(result);
+          setIsLoading('fullfilled');
+        });
+      }
+    } catch (error) {
+      throw new Error('[Context] Get Detail issue data fail');
     }
   }, [issuesNumber]);
 

@@ -7,7 +7,7 @@ export class IssuesService {
   }
   async get(pageNum: string) {
     try {
-      const url = `issues?sort=comments&page=${pageNum}&per_page=15`;
+      const url = `issues?sort=comments&page=${pageNum}&per_page=7`;
       const response = await this.httpClient.fetch(url);
       return response.json();
     } catch (error) {
